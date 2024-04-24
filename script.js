@@ -10,6 +10,7 @@ let num_choices = 3;
 let result = document.querySelector(".result");
 let name_inputs = document.querySelectorAll(".choice-name");
 let choices = document.querySelectorAll(".choice");
+let finished_spinning = true;
 
 function handleNamingInputs() {
   for (let i = 0; i < name_inputs.length; i++) {
@@ -23,9 +24,12 @@ handleNamingInputs();
 
 spin_btn.addEventListener("click", function() {
   // Generates random integer between 2160 and 3239 inclusive
-  rotation += Math.ceil((Math.random() * 1080) + 2160);
-  console.log("rotation by " + rotation);
-  container.style.transform = "rotate(" + rotation + "deg)";
+  if (finished_spinning) {
+    finished_spinning = false;
+    rotation += Math.ceil((Math.random() * 1080) + 2160);
+    console.log("rotation by " + rotation);
+    container.style.transform = "rotate(" + rotation + "deg)";
+  }
 });
 
 container.addEventListener("transitionend", function() {
@@ -41,6 +45,7 @@ container.addEventListener("transitionend", function() {
   result.textContent = "\"" + choices[choice_number].textContent + "\"" + " was chosen";
   result.style.opacity = "100%";
   console.log(choices[choice_number].textContent + " was chosen");
+  finished_spinning = true;
 })
 
 add_choices_btn.addEventListener("click", function() {
