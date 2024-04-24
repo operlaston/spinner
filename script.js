@@ -24,12 +24,11 @@ handleNamingInputs();
 
 spin_btn.addEventListener("click", function() {
   // Generates random integer between 2160 and 3239 inclusive
-  if (finished_spinning) {
-    finished_spinning = false;
-    rotation += Math.ceil((Math.random() * 1080) + 2160);
-    console.log("rotation by " + rotation);
-    container.style.transform = "rotate(" + rotation + "deg)";
-  }
+  if (!finished_spinning) return;
+  finished_spinning = false;
+  rotation += Math.ceil((Math.random() * 1080) + 2160);
+  console.log("rotation by " + rotation);
+  container.style.transform = "rotate(" + rotation + "deg)";
 });
 
 container.addEventListener("transitionend", function() {
@@ -49,6 +48,7 @@ container.addEventListener("transitionend", function() {
 })
 
 add_choices_btn.addEventListener("click", function() {
+  if (!finished_spinning) return;
   const temp = num_choices;
   num_choices = choice_input.value;
   if (parseInt(num_choices) == num_choices) {
