@@ -1,0 +1,244 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background-color: darkslategray;
+  margin: 0;
+  font-family: Raleway;
+  padding: 4em;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5rem;
+}
+
+.left-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2em;
+}
+
+.categories-title {
+  font-size: 2em;
+  letter-spacing: 0.1ch;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: skyblue;
+  filter: drop-shadow(0 0 0.14em rgba(135, 206, 250, 0.8));
+}
+
+.choice-name {
+  border-radius: 0.3em;
+  border: none;
+  font-size: 1.1em;
+  padding: 0.3em;
+}
+
+.center-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4em;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  position: relative;
+}
+
+.result {
+  /* font-size: 2em; */
+  font-size: clamp(1em, 1.6em, 2em);
+  font-weight: 600;
+  color: #87CEEB;
+  letter-spacing: 0.2ch;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 0.2em rgba(135, 206, 250, 0.5));
+  opacity: 0;
+}
+
+.container {
+  position: relative;
+  background-color: darkgray;
+  box-shadow: 0 0 1em rgba(0,0,0,0.5);
+  overflow: hidden;
+  min-width: 30em;
+  min-height: 30em;
+  border-radius: 50%;
+  transition: 4s transform;
+}
+
+.choice {
+  position: absolute;
+  height: 50%;
+  aspect-ratio: 3.46410161514 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(100% 0%, 50% 100%, 0 0);
+  transform-origin: bottom;
+  left: 50%;
+  display: flex;
+  writing-mode: vertical-lr;
+  font-size: 1.2em;
+  font-weight: 300;
+  padding-bottom: 1.4em;
+}
+
+.one {
+  transform: translateX(-50%);
+  background-color: #93e4c1;
+}
+
+.two {
+  transform: translateX(-50%) rotate(120deg);
+  background-color: #3baea0;
+}
+
+.three {
+  transform: translateX(-50%) rotate(240deg);
+  background-color: #118a7e;
+}
+
+.spin-btn {
+  position: absolute;
+  z-index: 1;
+  aspect-ratio: 1 / 1;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0 0 0.6em rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  background-color: #63d471;
+  cursor: pointer;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+
+.pointer-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  filter: drop-shadow(0 0 0.4em rgba(135, 206, 250, 0.5))
+}
+
+.pointer {
+  background-color: #63d471;
+  min-width: 2em;
+  min-height: 3.4em;
+  transform: translate(-50%, -120%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.choice-selection {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  font-size: 1.2em;
+  align-self: flex-end;
+}
+
+.choice-input {
+  padding: 0.3em;
+  border-radius: 0.4em;
+  border: none;
+}
+
+.add-choices-btn {
+  border-radius: 0.4em;
+  background-color: skyblue;
+  color: aliceblue;
+  box-shadow: 0 0 0.4em rgba(135, 206, 250, 0.5);
+  border: groove;
+  cursor: pointer;
+  padding: 0.4em;
+}
+
+.add-choices-btn:active {
+  background-color: rgba(135, 206, 235, 0.8);
+}
+
+.wrong-format-err, .range-err {
+  position: absolute;
+  color: red;
+  font-size: 0.6em;
+  top: 100%;
+  left: 0.3em;
+  opacity: 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spinner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <div class="left-card">
+        <div class="categories-title">Categories</div>
+        <input class="choice-name" placeholder="Name of Section 1">
+        <input class="choice-name" placeholder="Name of Section 2">
+        <input class="choice-name" placeholder="Name of Section 3">
+      </div>
+      <div class="center-card">
+        <div class="result">Result</div>
+        <div class="spinner">
+          <div class="container">
+            <div class="choice one">Choice 1</div>
+            <div class="choice two">Choice 2</div>
+            <div class="choice three">Choice 3</div>
+          </div>
+          <button class="spin-btn">Spin</button>
+          <div class="pointer-wrapper">
+            <div class="pointer"></div>
+          </div>
+        </div>
+        <div class="choice-selection">
+          <input class="choice-input" placeholder="Number of Choices">
+          <button class="add-choices-btn">Add Choices</button>
+          <div class="wrong-format-err">Please input an integer</div>
+          <div class="range-err">Please input a number between 2 and 30 (inclusive)</div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
